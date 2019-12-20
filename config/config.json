@@ -1,0 +1,38 @@
+{
+  "listen":":5010",
+  "runtimePath":"runtime",
+  "maxWork":10,
+  "maxQueueSize":200,
+  "db": {
+    "host":"10.20.20.82",
+    "name":"typhoon_ibc",
+    "user":"root",
+    "password":"typhoon",
+    "maxOpenConns":100,
+    "maxIdleConns":10,
+    "showSQL":true,
+    "slave_config":{
+      "user":"admin",
+      "password":"admin"
+    },
+    "slaves":[
+      {
+      "host":"10.20.20.80",
+        "port":"3306",
+        "name":"typhoon_ibc"
+    }
+    ]
+  },
+  "redis":{
+    "address":"127.0.0.1",
+    "password":"123456"
+  },
+  "log": {
+    "traceLevel": 1,
+    "logFile":"th-platform-gateway.log"
+  },
+  "gate_way":{
+    "host":"127.0.0.1"
+  },
+  "url":"http://mall-api.ibc.snsshop.net/"
+}

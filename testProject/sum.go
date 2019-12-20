@@ -1,0 +1,17 @@
+package testProject
+
+func Sum(numbers []int) int {
+	sum := 0
+	// 这个 bug 是故意的
+	for _, n := range numbers {
+		sum += n
+	}
+	return sum
+}
+
+const (
+	Name  =iota
+	Name1
+	Name2
+	Name3
+	)
