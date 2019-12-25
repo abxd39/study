@@ -3,7 +3,9 @@ package main
 import (
 	"log"
 
-	"github.com/abxd39/myproject/algorithms/BubbleSort"
+	"github.com/abxd39/study/algorithms/sort"
+
+	_ "github.com/abxd39/study/algorithms/sort"
 )
 
 func init() {
@@ -11,6 +13,7 @@ func init() {
 }
 func main() {
 	l := []int{3, 7, 9, 1, 6, 2, 5, 8, 0, 4}
-	new(BubbleSort.BubbleSort).Version1(l)
+	//new(sort.Algorithms).Version1(l)
+	new(sort.Algorithms).Insertion(l)
 	log.Println("hello algorithms !!!")
 }
