@@ -8,18 +8,22 @@
 // https://github.com/abxd39/study/doc/images/insertion.jpeg
 package sort
 
-import "log"
+import (
+	"log"
+)
 
-func (b *Algorithms) Insertion(l []int) {
+func (a *Algorithms) Insertion(l []int) {
 	//打牌的比喻很好。
-	for i := 2; i < len(l); i++ {
-		key := l[i]
-		j := i - 1
-		for j > 0 && l[j] > key {
-			l[j+1] = l[j]
-			j = j - 1
+	log.Println(l)
+	for j := 2; j < len(l); j++ {
+		key := l[j]
+		i := j - 1
+		for i >= 0 && l[i] > key {
+			l[i+1] = l[i]
+			i = i - 1
 		}
-		l[i] = key
+		l[i+1] = key
+		log.Printf("set %d %v", j, l)
 	}
 	log.Println("insertion ", l)
 }

@@ -2,7 +2,7 @@ package sort
 
 import "log"
 
-//冒泡排序
+//冒泡排序 时间复杂度是n 平方
 type Algorithms struct {
 }
 
