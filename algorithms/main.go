@@ -14,6 +14,6 @@ func main() {
 	l := []int{3, 7, 9, 1, 6, 2, 5, 8, 0, 4}
 	al := new(sort.Algorithms)
 	//al.Version1(l)
-	al.Insertion(l)
+	//al.Insertion(l)
 	log.Println("hello algorithms !!!")
 }
