@@ -4,3 +4,5 @@
 !/gitignore/dir1/*.go
 /gitignore/1.1dir/
 !/gitignore/1.1dir/*.go
+*.json
+.DS_Store
