@@ -16,7 +16,24 @@ func main() {
 	//sliceStudy()
 	//newAndMakeIsDifferent()
 	//sliceCopy()
-	Al200Algorithms()
+	//Al200Algorithms()
+
+	b := make(map[string]map[string][]string, 0)
+	c := make(map[string][]string, 0)
+	t1 := make([]string, 0)
+	//t2 := make([][]string, 0)
+	t1 = append(t1, "3")
+	//t1 = append(t1, "4")
+	c["2"] = append(c["2"], "3")
+	c["1"] = append(c["1"], "4")
+	b["1"] = c
+	b["2"] = c
+	log.Printf("%v")
+
+	log.Printf("%v", b)
+	b["2"]["1"] = []string{"A"}
+	log.Println(b)
+	//log.Println(c)
 }
 
 func newAndMakeIsDifferent() {
