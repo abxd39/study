@@ -29,11 +29,11 @@ type ImportBenefit struct {
 	Guardian1CardType string  `json:"guardian1_card_type"`
 	Guardian2Name     string  `json:"guardian2_name"`
 	Guardian2CardNo   string  `json:"guardian2_card_no"`
-	Guardian2CardType string  `json:"guardian2_card_type"`
+	Guardian2CardType string  `json:"guardian2_card_type" `
 }
 type Cell struct {
-	Col int //列
-	Raw int //行
+	Col int `form:"col" json:"col"` //列
+	Raw int `json:"raw" form:"raw"` //行
 }
 
 //sheet表头
@@ -62,17 +62,18 @@ func main() {
 		return
 	}
 
-	for _, sheet := range f.Sheets {
+	for si, sheet := range f.Sheets {
 		headMap := map[string]Cell{} //headMap["学校名称"]
-		//excleContent := make(map[int]BenefitImportParam, 0)
-
+		excelContent := make(map[int]ImportBenefit, 0)
+		log.Println("sheet", si)
+		if si > 0 {
+			continue
+		}
 		for r, row := range sheet.Rows {
 			if row == nil {
 				continue
 			}
-			if r > 3 {
-				return
-			}
+
 			p := ImportBenefit{}
 			for c, cell := range row.Cells {
 				str, err := cell.FormattedValue()
@@ -81,14 +82,14 @@ func main() {
 						str = ""
 					} else {
 						log.Println("game over")
-						return
+						break
 					}
 				}
+				//log.Println(k, v, str)
+				str = strings.Trim(str, " ")
 
-				if r == 1 {
+				if r == 1 { //抓取头部字段内容
 					for k, v := range importHead {
-						//log.Println(k, v, str)
-						str = strings.Trim(str, " ")
 						if strings.Compare(str, k) == 0 {
 							headMap[v] = Cell{
 								Col: c,
@@ -128,16 +129,13 @@ func main() {
 					}
 
 				}
-				if str == "" {
-					continue
-				}
 				//log.Printf("row=%d index=%d value=%s", r, c, str)
 
 			}
-			log.Printf(" row =%d %+v", r, p)
-			//excleContent[r] = p
+			//log.Printf(" row =%d %+v", r, p)
+			excelContent[r] = p
 		}
-		//log.Printf("%+v", excleContent)
+		log.Printf("%+v", excelContent)
 	}
 }
 
